@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body{
+            background-color:black;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: white;
+            height:100vh;
+        }
+        .button{
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-around;
+            width: 50vw;
+        }
+        .button .check{
+            height: 5em;
+            width: 5em;
+        }
+        #grey{
+            background-color: grey;
+        }
+        #red{
+            background-color: red;
+        }
+        #blue{
+            background-color: blue;
+        }
+        #purple{
+            background-color: rgb(89, 18, 255);
+        }
+    </style>
+    <title>BgColor</title>
+</head>
+<body>
+    <h1>Color Picker for Background</h1>
+    <div class="button">
+        <button class="check" id="grey"></button>
+        <button class="check" id="red"></button>
+        <button class="check" id="blue"></button>
+        <button class="check" id="purple"></button>
+    </div>
+    <p>Pic color from above to change background color</p>
+</body>
+<script>
+    const button = document.querySelectorAll(".check");
+    button.forEach(function(e){
+        e.addEventListener("click",function(en){
+            document.querySelector("body").style.backgroundColor = en.target.id;
+        })
+    });
+</script>
+</html>
