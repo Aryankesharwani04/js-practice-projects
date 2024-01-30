@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Changer</title>
+    <style>
+        body{
+            color: white;
+            background-color: black;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction:column;
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>Press the KEY : <span id="key"></span></h1>
+</body>
+<script>
+    var val = Math.floor(Math.random()*122 + 65);
+    var event = new KeyboardEvent('keydown', {keyCode: val});
+    function generateRandom(){
+        val = Math.floor(Math.random()*222 + 1);
+        event = new KeyboardEvent('keydown', {keyCode: val});
+    }
+    console.log(event.key);
+    if(!(event.key)){
+        generateRandom();
+    }
+    else
+        document.getElementById("key").innerHTML = event.key;
+    window.addEventListener("keydown", (e) =>{
+
+    });
+    
+</script>
+</html>
