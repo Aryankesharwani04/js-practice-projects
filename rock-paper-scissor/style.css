@@ -1,0 +1,64 @@
+body{
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: aquamarine;
+}
+.header h1{
+    color: black;
+    font-size: 3em;
+    letter-spacing: 0.1vw;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+}
+.images{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 60vw;
+    background-color: transparent;
+}
+.images button{
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+    border-radius: 100%;
+    background-color: transparent;
+
+}
+.images button img{
+    height: 23vh;
+    max-width: 100%;
+    filter: brightness(.8) contrast(1.1);
+    border-radius:100%;
+    border: 0;
+
+
+}
+.images button #reset{
+    height: 10vh;
+    width: 10vh;
+}
+#gameSummary, #gameHistory{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#gameSummary table, #gameHistory table{
+    font-size: 1.4em;
+}
+#gameSummary table tr th, #gameHistory table tr th{
+    background-color: blueviolet;
+    padding: 9px;
+}
+#gameSummary table tr td, #gameHistory table tr td{
+    background-color: lightgoldenrodyellow;
+    padding: 9px;
+    color: black;
+}

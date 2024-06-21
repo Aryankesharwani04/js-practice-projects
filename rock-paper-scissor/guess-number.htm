@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess Number</title>
+    <style>
+        body{
+            color: aliceblue;
+            background-color: black;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            height: 100vh;
+        }
+        #form{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-between;
+            flex-direction: column;
+            align-items: center;
+
+        }
+        #gameOver{
+            text-align:center;
+            margin-top:50px;
+            font-size: 3em;
+            display: none;
+        }
+        #playAgain{
+            visibility: hidden;
+        }
+        #result{
+            color: blueviolet;
+        }
+    </style>
+</head>
+<body>
+    <div id="gameOver">
+    </div>
+    <button id="playAgain">Play Again</button>
+    <h1>Guess a Number</h1>
+    <div id="form">
+        Enter your number:
+        <input type="number" name="number" id="number">
+        <br><br>
+        <input type="submit" value="Submit" id="subt">
+    </div>
+    <div class="previousGuess">Previous Guesses<span id="guesses"></span></div>
+    <div class="gamesPlayed">Guesses Remaining<span id="guessRemain">10</span></div>
+    <div id="result"></div>
+</body>
+<script>
+    let randomNumber = parseInt(Math.random()*100 + 1);
+    let guesses = [];
+    let remainingGuesses = 10;
+    let playGame = true;
+    const submit = document.getElementById("subt");
+    if(playGame){
+        subt.addEventListener("click",function(e){
+            e.preventDefault();
+            const number = parseInt(document.getElementById("number").value);
+            validateGuess(number);
+        });
+    }
+    function validateGuess(number){
+        if (isNaN(number) || number < 0 || number > 99){
+                alert("Invalid input! Please enter a number between 0 and 99.");
+                return false;   
+            }
+            guesses.push(number);
+            if(remainingGuesses > 1){
+                displayGuesses(number);
+                checkAnswer(number);
+            }
+            else{
+                displayGuesses(number);
+                endGame(number);
+            }
+    }
+    function displayGuesses(guess){
+        document.getElementById("guesses").innerHTML += `${guess},`;
+        remainingGuesses--;
+        document.getElementById("guessRemain").textContent = ` ${remainingGuesses}`;
+    }
+    function checkAnswer(num){
+        if(num  == randomNumber){
+            displayMessage("You Guessed it right!");
+            endGame(num);
+        }else{ if(num < randomNumber)
+                displayMessage("Your guess was too low!")
+            else
+                displayMessage("Your guess was too high!")
+        }
+    }
+    function displayMessage(message){
+        document.getElementById("result").innerHTML =  `<h2>${message}</h2>`;
+    }
+    function endGame(n){
+        document.getElementById("form").style.display="none";
+        document.getElementById("gameOver").style.display="block";
+        document.getElementById("playAgain").style.visibility ="visible" ;
+        if(n === randomNumber)
+            document.getElementById("gameOver").innerText += `Congratulations !! random number was ${randomNumber}`;
+        else
+            document.getElementById("gameOver").innerText += `Game Over !! random number was ${randomNumber}`;
+        playGame = false;
+        newGame();
+    }
+    function newGame() {
+        const playAgain = document.getElementById("playAgain");
+        playAgain.addEventListener("click",function(e){
+            e.preventDefault();
+            document.getElementById("result").innerHTML= "";
+            document.getElementById("guesses").innerHTML= "";
+            guesses=[];
+            remainingGuesses=10;
+            document.getElementById("guessRemain").textContent =`${remainingGuesses}`;
+            document.getElementById("gameOver").style.display="none";
+            document.getElementById("playAgain").style.visibility ="hidden";
+            document.getElementById("form").style.display="flex";
+            randomNumber = parseInt(Math.random()*100 + 1);
+            playGame = true;
+        });
+    }
+
+</script>
+</html>

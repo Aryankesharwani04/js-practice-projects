@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Rock-Paper-Scissor</title>
+</head>
+<body>
+    <div class="header">
+        <h1>Rock Paper Scissor</h1>
+    </div>
+    <div class="images">
+        <button onclick=" userMove = 'Rock';
+            //get computer move
+            getComputerMove();
+            evaluateMoves();
+            gameSummary();
+            show();
+            console.log(`userMove is ${userMove}, computer move is ${computerMove} and result is ${result}`);
+        ">
+            <img src="rock.png" alt="rock">
+        </button>
+        <button onclick=" userMove = 'Paper';
+            //get computer move
+            getComputerMove();
+            evaluateMoves();
+            gameSummary();
+            show()
+            console.log(`userMove is ${userMove}, computer move is ${computerMove} and result is ${result}`);
+        ">
+            <img src="paper.png" alt="paper">
+        </button>
+        <button onclick=" userMove = 'Scissor';
+             //get computer move
+            getComputerMove();
+            evaluateMoves();
+            gameSummary();
+            show()
+            console.log(`userMove is ${userMove}, computer move is ${computerMove} and result is ${result}`);
+        ">
+            <img src="scissors.png" alt="scissor">
+        </button>
+        <button onclick=" userMove = 'Reset';
+        reset();
+        show();
+        ">
+            <img src="reset.jpg" alt="reset" id="reset">
+        </button>
+    </div>
+    <div id="gameSummary">
+        <h1>Game Summary</h1>
+        <table >
+            <tr >
+                <th>Wins</th>
+                <th>Losses</th>
+                <th>Ties</th>
+                <th>Games Played</th>
+            </tr>
+            <tr>
+                <td id="win">0</td>
+                <td id="lose">0</td>
+                <td id="tie">0</td>
+                <td id="played">0</td>
+            </tr>
+        </table>
+    </div>
+    <div id="gameHistory">
+        <h1>Game History</h1>
+        <table id="table">
+            <tr>
+                <th>User Move</th>
+                <th>Computer Move</th>
+                <th>Result</th>
+            </tr>
+            <tr>
+                <td id="userMove"></td>
+                <td id="computerMove"></td>
+                <td id="result"></td>
+            </tr>
+        </table>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
